@@ -12,8 +12,8 @@ pathcount = 0
 
 
 def tree_generate(path, symbol):
-    global dircount
-    global filecount
+    global pathcount
+    global fcount
     alld = []
     for i in os.listdir(path):
         if not i.startswith('.'):
