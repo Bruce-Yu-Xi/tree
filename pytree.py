@@ -15,6 +15,7 @@ def printName(indent, i, lastElement):
         indent1 = indent + '│   '
     return indent1
 
+
 def sort_key(s):
     return re.sub('[^A-Za-z]+', '', s).lower()
 
