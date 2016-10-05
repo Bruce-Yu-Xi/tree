@@ -50,12 +50,14 @@ def printDir(dir, file_cmd, dir_cmd, indent=''):
 
 
 if __name__ == '__main__':
-
-    if (len(sys.argv) == 1):
+    size = len(sys.argv)
+    if  size== 1:
         dir = '.'
     else:
+        if size == 2:
         dir = sys.argv[1]
+        else:
+            print ('ERROR')
     print(dir)
     cmd = printDir(dir, 0, 0, '')
-    print()
     print('%d directories, %d files' % (cmd[0], cmd[1]))
