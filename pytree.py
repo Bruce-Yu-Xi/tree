@@ -44,18 +44,18 @@ def printDir(dir, file_cmd, dir_cmd, indent=''):
         elif(os.path.isfile(curDir)):
             printName(indent, i, curList[-1])
             file_cmd += 1
-    cnt.append(dir_cmd)
-    cnt.append(file_cmd)
-    return cnt
+    cmd.append(dir_cmd)
+    cmd.append(file_cmd)
+    return cmd
 
 
 if __name__ == '__main__':
 
     if (len(sys.argv) == 1):
-        path = '.'
+        dir = '.'
     else:
-        path = sys.argv[1]
-    print(path)
-    cmd = printDir(path, 0, 0, '')
+        dir = sys.argv[1]
+    print(dir)
+    cmd = printDir(dir, 0, 0, '')
     print()
     print('%d directories, %d files' % (cmd[0], cmd[1]))
