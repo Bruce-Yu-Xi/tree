@@ -34,8 +34,6 @@ def tree_generate(path, symbol):
         num_children = num_children + 1
 
 if __name__ == '__main__':
-
-    subprocess.run(['tree'] + sys.argv[1:])
     dir_path = "."
     if(len(sys.argv) == 2):
         dir_path = sys.argv[1]
