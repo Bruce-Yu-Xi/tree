@@ -1,9 +1,10 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 import subprocess
 import sys
 import os
 import string
 import re
+
 
 def printName(indent, i, lastElement):
     if i == lastElement:
@@ -13,7 +14,6 @@ def printName(indent, i, lastElement):
         print(indent + '├── ' + str(i))
         indent1 = indent + '│   '
     return indent1
-
 
 def sort_key(s):
     return re.sub('[^A-Za-z]+', '', s).lower()
@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
     if (len(sys.argv) == 1):
         path = '.'
-    elif:
+    else:
         path = sys.argv[1]
     print(path)
     cmd = printDir(path, 0, 0, '')
