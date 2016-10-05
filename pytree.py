@@ -26,7 +26,6 @@ def sortList(curList):
     return curList
 
 
-
 def printDir(path, file_cnt, dir_cnt, indent=''):
     if (path[-1] != '/'):
         path = path + '/'
