@@ -26,14 +26,14 @@ def sortList(curList):
     return curList
 
 
-def printDir(dir, file_cmd, dir_cmd, indent=''):
-    if (dir[-1] != '/'):
-        dir += '/'
-    curList = os.listdir(dir)
+def printDir(d, file_cmd, dir_cmd, indent=''):
+    if (d[-1] != '/'):
+        d += '/'
+    curList = os.listdir(d)
     curList = sortList(curList)
     cmd = []
     for i in curList:
-        curDir = dir + i
+        curDir = d + i
         if (os.path.isdir(curDir)):
             curDir += '/'
             dir_cmd += 1
@@ -52,12 +52,13 @@ def printDir(dir, file_cmd, dir_cmd, indent=''):
 if __name__ == '__main__':
     size = len(sys.argv)
     if size == 1:
-        dir = '.'
+        d = '.'
     else:
         if size == 2:
-            dir = sys.argv[1]
+            d = sys.argv[1]
         else:
             print('ERROR')
-    print(dir)
-    cmd = printDir(dir, 0, 0, '')
+    print(d)
+    cmd = printDir(d, 0, 0, '')
+    print()
     print('%d directories, %d files' % (cmd[0], cmd[1]))
