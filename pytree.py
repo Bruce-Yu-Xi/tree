@@ -51,7 +51,7 @@ def printDir(dir, file_cmd, dir_cmd, indent=''):
 
 if __name__ == '__main__':
     size = len(sys.argv)
-    if  size == 1:
+    if size == 1:
         dir = '.'
     else:
         if size == 2:
