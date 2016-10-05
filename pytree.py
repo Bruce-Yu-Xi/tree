@@ -26,39 +26,38 @@ def sortList(curList):
     return curList
 
 
-def printDir(d, file_cmd, dir_cmd, indent=''):
-    if (d[-1] != '/'):
-        d += '/'
-    curList = os.listdir(d)
+
+def printDir(path, file_cnt, dir_cnt, indent=''):
+    if (path[-1] != '/'):
+        path = path + '/'
+    curList = os.listdir(path)
     curList = sortList(curList)
-    cmd = []
+    cnt = []
     for i in curList:
-        curDir = d + i
-        if (os.path.isdir(curDir)):
-            curDir += '/'
-            dir_cmd += 1
+        curPath = path + i
+        if (os.path.isdir(curPath)):
+            curPath = curPath + '/'
+            dir_cnt = dir_cnt + 1
             indent1 = printName(indent, i, curList[-1])
-            cmd1 = printDir(curDir, file_cmd, dir_cmd, indent1)
-            file_cmd = cmd1[1]
-            dir_cmd = cmd1[0]
-        elif(os.path.isfile(curDir)):
+            cnt1 = printDir(curPath, file_cnt, dir_cnt, indent1)
+            file_cnt = cnt1[1]
+            dir_cnt = cnt1[0]
+        elif(os.path.isfile(curPath)):
             printName(indent, i, curList[-1])
-            file_cmd += 1
-    cmd.append(dir_cmd)
-    cmd.append(file_cmd)
-    return cmd
+            file_cnt = file_cnt + 1
+    cnt.append(dir_cnt)
+    cnt.append(file_cnt)
+    return cnt
 
 
 if __name__ == '__main__':
-    size = len(sys.argv)
-    if size == 1:
-        d = '.'
+
+    subprocess.run(['tree'] + sys.argv[1:])
+    if (len(sys.argv) == 1):
+        path = '.'
     else:
-        if size == 2:
-            d = sys.argv[1]
-        else:
-            print('ERROR')
-    print(d)
-    cmd = printDir(d, 0, 0, '')
+        path = sys.argv[1]
+    print(path)
+    cnt = printDir(path, 0, 0, '')
     print()
-    print('%d directories, %d files' % (cmd[0], cmd[1]))
+    print('%d directories, %d files' % (cnt[0], cnt[1]))
